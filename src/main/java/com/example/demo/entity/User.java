@@ -11,8 +11,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue
-    private int id;
+    private String id;
 
     @Column(name="username", unique = true)
     private String userName;
@@ -23,12 +22,12 @@ public class User {
     @Column(name = "lastname")
     private String lastName;
 
-    public int getId() {
+    public String getId() {
 
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
 
         this.id = id;
     }

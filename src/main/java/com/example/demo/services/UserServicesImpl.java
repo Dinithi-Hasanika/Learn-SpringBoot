@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.util.UserIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ public class UserServicesImpl implements UserServices{
     public User addUser(User user) {
         User newUser = null;
         try{
+            user.setId(new UserIdGenerator().generateId());
            newUser = userRepository.saveAndFlush(user);
         }catch (Exception e){
             newUser = null;
