@@ -16,13 +16,13 @@ public class UserServicesImpl implements UserServices{
     @Override
     public List<User> getUsers() {
 
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public User getUserById(int id) {
 
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
