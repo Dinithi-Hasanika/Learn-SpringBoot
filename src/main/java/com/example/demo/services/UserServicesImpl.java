@@ -32,7 +32,12 @@ public class UserServicesImpl implements UserServices{
 
     @Override
     public User addUser(User user) {
-
-        return userRepository.saveAndFlush(user);
+        User newUser = null;
+        try{
+           newUser = userRepository.saveAndFlush(user);
+        }catch (Exception e){
+            newUser = null;
+        }
+        return newUser;
     }
 }
