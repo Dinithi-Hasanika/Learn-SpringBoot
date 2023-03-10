@@ -3,6 +3,8 @@ package com.example.demo.services;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.util.UserIdGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Service
 public class UserServicesImpl implements UserServices{
+
+    Logger log = LoggerFactory.getLogger(UserServicesImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -38,7 +42,7 @@ public class UserServicesImpl implements UserServices{
             user.setId(new UserIdGenerator().generateId());
            newUser = userRepository.saveAndFlush(user);
         }catch (Exception e){
-            newUser = null;
+            log.error("Error occurred while adding user",e);
         }
         return newUser;
     }
