@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entity.User;
+import com.example.demo.exceptions.APIException;
 
 import java.util.List;
 
@@ -12,6 +13,6 @@ public interface UserServices {
 
     void deleteUserById(int id);
 
-    User addUser(User user);
+    User addUser(User user) throws APIException;
 
 }
