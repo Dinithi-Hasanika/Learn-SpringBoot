@@ -42,8 +42,11 @@ public class UserServicesImpl implements UserServices{
     }
 
     @Override
-    public void deleteUserById(int id) {
-
+    public void deleteUserById(String id) {
+        userRepository.deleteById(id);
+        if (log.isDebugEnabled()) {
+            log.debug("User ID "+id+" Deleted.");
+        }
     }
 
     @Override

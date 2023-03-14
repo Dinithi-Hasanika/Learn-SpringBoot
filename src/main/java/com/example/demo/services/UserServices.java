@@ -11,7 +11,7 @@ public interface UserServices {
 
     User getUserById(String id) throws APIException;
 
-    void deleteUserById(int id);
+    void deleteUserById(String id);
 
     User addUser(User user) throws APIException;
 
