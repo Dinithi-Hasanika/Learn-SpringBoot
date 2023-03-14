@@ -28,7 +28,7 @@ public class UserServicesImpl implements UserServices{
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(String id) {
 
         return userRepository.findById(id).orElse(null);
     }
@@ -40,7 +40,7 @@ public class UserServicesImpl implements UserServices{
 
     @Override
     public User addUser(User user) throws APIException {
-        User newUser = null;
+        User newUser;
         try{
             user.setId(new UserIdGenerator().generateId());
            newUser = userRepository.saveAndFlush(user);
