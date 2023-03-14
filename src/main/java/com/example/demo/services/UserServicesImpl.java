@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.constants.UserServiceConstants;
 import com.example.demo.entity.User;
 import com.example.demo.exceptions.APIException;
 import com.example.demo.exceptions.ErrorResponse;
@@ -35,7 +36,7 @@ public class UserServicesImpl implements UserServices{
             if (log.isDebugEnabled()) {
                 log.debug("User with id: "+id+" not found");
             }
-            throw new APIException(HttpStatus.NOT_FOUND,new ErrorResponse("User Not Found"));
+            throw new APIException(HttpStatus.NOT_FOUND,new ErrorResponse(UserServiceConstants.USER_NOT_FOUND));
         }
         return user;
     }
@@ -53,7 +54,7 @@ public class UserServicesImpl implements UserServices{
            newUser = userRepository.saveAndFlush(user);
         }catch (Exception e){
             log.error("Error occurred while adding user",e);
-            throw new APIException(HttpStatus.BAD_REQUEST,new ErrorResponse("Username Exists"));
+            throw new APIException(HttpStatus.BAD_REQUEST,new ErrorResponse(UserServiceConstants.USERNAME_EXISTS));
         }
         return newUser;
     }
