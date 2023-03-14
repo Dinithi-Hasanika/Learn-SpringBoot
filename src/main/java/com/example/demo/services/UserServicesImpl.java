@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entity.User;
 import com.example.demo.exceptions.APIException;
+import com.example.demo.exceptions.ErrorResponse;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.util.UserIdGenerator;
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class UserServicesImpl implements UserServices{
            newUser = userRepository.saveAndFlush(user);
         }catch (Exception e){
             log.error("Error occurred while adding user",e);
-            throw new APIException(HttpStatus.BAD_REQUEST,"Username exists");
+            throw new APIException(HttpStatus.BAD_REQUEST,new ErrorResponse("Username Exists"));
         }
         return newUser;
     }

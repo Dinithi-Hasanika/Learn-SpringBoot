@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 public class APIException extends Exception{
 
     HttpStatus error_status;
-    String errorMsg;
+    ErrorResponse errorResponse;
 
-    public APIException(HttpStatus error_status, String errorMsg) {
+    public APIException(HttpStatus error_status, ErrorResponse errorResponse) {
 
         this.error_status = error_status;
-        this.errorMsg = errorMsg;
+        this.errorResponse = errorResponse;
     }
 
     public HttpStatus getError_status() {
@@ -23,13 +23,13 @@ public class APIException extends Exception{
         this.error_status = error_status;
     }
 
-    public String getErrorMsg() {
+    public ErrorResponse getErrorResponse() {
 
-        return errorMsg;
+        return errorResponse;
     }
 
-    public void setErrorMsg(String errorMsg) {
+    public void setErrorResponse(ErrorResponse errorResponse) {
 
-        this.errorMsg = errorMsg;
+        this.errorResponse = errorResponse;
     }
 }

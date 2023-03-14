@@ -11,6 +11,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(APIException.class)
     public ResponseEntity<Object> apiError(APIException ex) {
-        return ResponseEntity.status(ex.getError_status()).body(ex);
+        return ResponseEntity.status(ex.getError_status()).body(ex.getErrorResponse());
     }
 }
