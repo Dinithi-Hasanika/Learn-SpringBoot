@@ -28,9 +28,16 @@ public class UserServicesImpl implements UserServices{
     }
 
     @Override
-    public User getUserById(String id) {
+    public User getUserById(String id) throws APIException {
 
-        return userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
+        if (user == null) {
+            if (log.isDebugEnabled()) {
+                log.debug("User with id: "+id+" not found");
+            }
+            throw new APIException(HttpStatus.NOT_FOUND,new ErrorResponse("User Not Found"));
+        }
+        return user;
     }
 
     @Override

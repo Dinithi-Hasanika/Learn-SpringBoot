@@ -27,7 +27,7 @@ public class UserRestController {
     }
 
     @GetMapping("/user/{user_id}")
-    public ResponseEntity<User> getUserById(@PathVariable String user_id){
+    public ResponseEntity<User> getUserById(@PathVariable String user_id) throws APIException {
         return ResponseEntity.ok(userServices.getUserById(user_id));
     }
 

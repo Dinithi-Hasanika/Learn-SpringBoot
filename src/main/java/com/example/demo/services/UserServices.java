@@ -9,7 +9,7 @@ public interface UserServices {
 
     List<User> getUsers();
 
-    User getUserById(String id);
+    User getUserById(String id) throws APIException;
 
     void deleteUserById(int id);
 
