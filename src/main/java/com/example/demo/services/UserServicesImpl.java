@@ -42,10 +42,14 @@ public class UserServicesImpl implements UserServices{
     }
 
     @Override
-    public void deleteUserById(String id) {
-        userRepository.deleteById(id);
-        if (log.isDebugEnabled()) {
-            log.debug("User ID "+id+" Deleted.");
+    public void deleteUserById(String id) throws APIException {
+        try {
+            userRepository.deleteById(id);
+            if (log.isDebugEnabled()) {
+                log.debug("User ID " + id + " Deleted.");
+            }
+        } catch (Exception e) {
+            throw new APIException(HttpStatus.NOT_FOUND, new ErrorResponse(UserServiceConstants.USER_NOT_FOUND));
         }
     }
 

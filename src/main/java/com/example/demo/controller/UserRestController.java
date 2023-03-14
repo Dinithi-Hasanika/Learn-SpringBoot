@@ -39,7 +39,7 @@ public class UserRestController {
     }
 
     @DeleteMapping("/user/{user_id}")
-    public HttpStatus deleteUser(@PathVariable String user_id){
+    public HttpStatus deleteUser(@PathVariable String user_id) throws APIException {
         userServices.deleteUserById(user_id);
         return HttpStatus.OK;
     }
